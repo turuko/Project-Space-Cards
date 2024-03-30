@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0vfc0fyictiw"]
+
+[ext_resource type="PackedScene" uid="uid://cp3g45gdnojm" path="res://Scenes/hand.tscn" id="1_giwgb"]
+[ext_resource type="Theme" uid="uid://dkn0dl75qg501" path="res://Resources/main_theme.tres" id="2_bths2"]
+[ext_resource type="Script" path="res://Scripts/Data/player.gd" id="3_8kgl7"]
+[ext_resource type="Resource" uid="uid://dfrlevxbqrfvj" path="res://Resources/Cards/test_deck.tres" id="4_ykgmu"]
+[ext_resource type="Script" path="res://Scripts/battle_manager.gd" id="5_x0v3w"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." groups=["ui_layer"]]
+
+[node name="Hand" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("1_giwgb")]
+player = NodePath("../../Player")
+
+[node name="DrawButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 230.0
+offset_right = -20.0
+offset_bottom = 280.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("2_bths2")
+text = "Draw Card"
+
+[node name="DiscardButton" type="Button" parent="CanvasLayer"]
+offset_left = 20.0
+offset_top = 758.0
+offset_right = 150.0
+offset_bottom = 808.0
+theme = ExtResource("2_bths2")
+text = "Discard Card"
+
+[node name="Player" type="Node" parent="."]
+script = ExtResource("3_8kgl7")
+starting_deck = ExtResource("4_ykgmu")
+
+[node name="BattleManager" type="Node" parent="." node_paths=PackedStringArray("draw_button", "discard_button", "player")]
+script = ExtResource("5_x0v3w")
+draw_button = NodePath("../CanvasLayer/DrawButton")
+discard_button = NodePath("../CanvasLayer/DiscardButton")
+player = NodePath("../Player")

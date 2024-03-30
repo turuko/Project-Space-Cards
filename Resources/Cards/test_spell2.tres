@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="SpellCard" load_steps=5 format=3 uid="uid://clwj35djs8t77"]
+
+[ext_resource type="Script" path="res://Resource Scripts/Cards/Effects/damage_effect.gd" id="1_8owsr"]
+[ext_resource type="Texture2D" uid="uid://blqspr87hpdm3" path="res://Graphics/Ice spell.png" id="1_orqxw"]
+[ext_resource type="Script" path="res://Resource Scripts/Cards/spell_card.gd" id="1_vc5qp"]
+
+[sub_resource type="Resource" id="Resource_2avwr"]
+script = ExtResource("1_8owsr")
+damage = 6.0
+targeting = Array[int]([0, 1, 4])
+description = "XXXXX"
+
+[resource]
+script = ExtResource("1_vc5qp")
+cost = 4
+art = ExtResource("1_orqxw")
+name = "Test 2"
+flavor_text = "The second of the tests"
+effects = Array[Resource("res://Resource Scripts/Cards/Effects/card_effect.gd")]([SubResource("Resource_2avwr")])

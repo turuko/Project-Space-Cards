@@ -1,0 +1,182 @@
+[gd_scene load_steps=11 format=3 uid="uid://co2tq4by4fopg"]
+
+[ext_resource type="Theme" uid="uid://dkn0dl75qg501" path="res://Resources/main_theme.tres" id="1_f5qkj"]
+[ext_resource type="Script" path="res://Scripts/UI/card_ui.gd" id="2_4i5r3"]
+[ext_resource type="Texture2D" uid="uid://cvnb8ru7phcfp" path="res://Graphics/Fire spell.png" id="3_qippn"]
+[ext_resource type="Texture2D" uid="uid://b2w4ciwumc1y8" path="res://Graphics/card_corner.png" id="4_m7dbm"]
+[ext_resource type="Script" path="res://Scripts/UI/card_state_machine.gd" id="5_8vfqw"]
+[ext_resource type="Script" path="res://Scripts/UI/Card UI States/base_state.gd" id="6_2ohu4"]
+[ext_resource type="Script" path="res://Scripts/UI/Card UI States/clicked_state.gd" id="7_orifh"]
+[ext_resource type="Script" path="res://Scripts/UI/Card UI States/dragging_state.gd" id="8_u10s0"]
+[ext_resource type="Script" path="res://Scripts/UI/Card UI States/released_state.gd" id="9_3v0dw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0ylr"]
+bg_color = Color(0.811765, 0.713726, 0.572549, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.47451, 0.384314, 0.184314, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[node name="CardUI" type="Panel"]
+custom_minimum_size = Vector2(165, 240)
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_f5qkj")
+script = ExtResource("2_4i5r3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Content" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_f5qkj")
+
+[node name="Art" type="TextureRect" parent="MarginContainer/Content"]
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("3_qippn")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/Content"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_f5qkj")
+
+[node name="Effects" type="Label" parent="MarginContainer/Content"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_f5qkj")
+text = "This is where card effects will be described."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/Content"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("1_f5qkj")
+
+[node name="Stats" type="HBoxContainer" parent="MarginContainer/Content"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Attack" type="Label" parent="MarginContainer/Content/Stats"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme = ExtResource("1_f5qkj")
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="MarginContainer/Content/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="UnitCount" type="Label" parent="MarginContainer/Content/Stats"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme = ExtResource("1_f5qkj")
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/Content/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Health" type="Label" parent="MarginContainer/Content/Stats"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme = ExtResource("1_f5qkj")
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+custom_minimum_size = Vector2(140, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i0ylr")
+
+[node name="Name" type="Label" parent="MarginContainer/Panel"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+theme = ExtResource("1_f5qkj")
+text = "Card Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="CostRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 44.0
+offset_bottom = 44.0
+mouse_filter = 2
+theme = ExtResource("1_f5qkj")
+texture = ExtResource("4_m7dbm")
+
+[node name="Cost" type="Label" parent="CostRect"]
+custom_minimum_size = Vector2(14, 14)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 22.0
+offset_bottom = 22.0
+theme = ExtResource("1_f5qkj")
+text = "XX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_8vfqw")
+initial_state = NodePath("BaseState")
+
+[node name="BaseState" type="Node" parent="CardStateMachine"]
+script = ExtResource("6_2ohu4")
+
+[node name="ClickedState" type="Node" parent="CardStateMachine"]
+script = ExtResource("7_orifh")
+state = 1
+
+[node name="DraggingState" type="Node" parent="CardStateMachine"]
+script = ExtResource("8_u10s0")
+state = 2
+
+[node name="ReleasedState" type="Node" parent="CardStateMachine"]
+script = ExtResource("9_3v0dw")
+state = 4
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

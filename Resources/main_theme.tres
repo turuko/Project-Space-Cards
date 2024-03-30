@@ -1,0 +1,41 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dkn0dl75qg501"]
+
+[ext_resource type="FontFile" uid="uid://64t3n06hvl7t" path="res://Graphics/Fonts/ChakraPetch-Regular.ttf" id="1_bx4eq"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_wm7ra"]
+color = Color(0.47451, 0.384314, 0.184314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_la80h"]
+bg_color = Color(0.811765, 0.713726, 0.572549, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.47451, 0.384314, 0.184314, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l8e1p"]
+bg_color = Color(0.811765, 0.713726, 0.572549, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.47451, 0.384314, 0.184314, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 10
+
+[resource]
+default_font = ExtResource("1_bx4eq")
+default_font_size = 16
+HSeparator/styles/separator = SubResource("StyleBoxLine_wm7ra")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Panel/styles/panel = SubResource("StyleBoxFlat_la80h")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_l8e1p")
+VBoxContainer/constants/separation = 0

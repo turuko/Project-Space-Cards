@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DamageEffect" load_steps=2 format=3 uid="uid://bsxmfc10cxdrs"]
+
+[ext_resource type="Script" path="res://Resource Scripts/Cards/Effects/damage_effect.gd" id="1_3nt3q"]
+
+[resource]
+script = ExtResource("1_3nt3q")
+damage = 0.0
+targeting = Array[int]([0, 1, 4])
+description = "Deal x damage"

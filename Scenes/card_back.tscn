@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5ogd2ndyggf3"]
+
+[ext_resource type="Theme" uid="uid://dkn0dl75qg501" path="res://Resources/main_theme.tres" id="1_a0w0o"]
+
+[node name="CardBack" type="Panel"]
+custom_minimum_size = Vector2(220, 320)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -320.0
+offset_right = 110.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_a0w0o")

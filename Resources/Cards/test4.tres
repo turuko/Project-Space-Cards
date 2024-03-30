@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CreatureCard" load_steps=3 format=3 uid="uid://cuvibpdf7mspe"]
+
+[ext_resource type="Script" path="res://Resource Scripts/Cards/creature_card.gd" id="1_ewg2k"]
+[ext_resource type="Texture2D" uid="uid://bvha8udggetkq" path="res://icon.svg" id="1_t6j5e"]
+
+[resource]
+script = ExtResource("1_ewg2k")
+amount = 8
+damage_per_unit = 10.0
+health_per_unit = 100.0
+armor_per_unit = 3.0
+attacks_per_second = 1.25
+cost = 4
+art = ExtResource("1_t6j5e")
+name = "Multiple Godots"
+flavor_text = "The 4'th of the tests"
+effects = Array[Resource("res://Resource Scripts/Cards/Effects/card_effect.gd")]([])
