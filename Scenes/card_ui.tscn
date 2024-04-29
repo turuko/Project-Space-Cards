@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://co2tq4by4fopg"]
+[gd_scene load_steps=12 format=3 uid="uid://co2tq4by4fopg"]
 
 [ext_resource type="Theme" uid="uid://dkn0dl75qg501" path="res://Resources/main_theme.tres" id="1_f5qkj"]
 [ext_resource type="Script" path="res://Scripts/UI/card_ui.gd" id="2_4i5r3"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/Card UI States/clicked_state.gd" id="7_orifh"]
 [ext_resource type="Script" path="res://Scripts/UI/Card UI States/dragging_state.gd" id="8_u10s0"]
 [ext_resource type="Script" path="res://Scripts/UI/Card UI States/released_state.gd" id="9_3v0dw"]
+[ext_resource type="Script" path="res://Scripts/UI/Card UI States/aiming_state.gd" id="9_h6xlh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_er5p5"]
 bg_color = Color(0.811765, 0.713726, 0.572549, 1)
@@ -200,6 +201,10 @@ state = 1
 [node name="DraggingState" type="Node" parent="CardStateMachine"]
 script = ExtResource("8_u10s0")
 state = 2
+
+[node name="AimingState" type="Node" parent="CardStateMachine"]
+script = ExtResource("9_h6xlh")
+state = 3
 
 [node name="ReleasedState" type="Node" parent="CardStateMachine"]
 script = ExtResource("9_3v0dw")

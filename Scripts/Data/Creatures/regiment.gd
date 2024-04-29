@@ -5,10 +5,11 @@ var unit_scene: PackedScene
 var count: int
 
 
-func _init(unit: PackedScene, _regiment_area_size: Vector2, _count: int):
+func _init(unit: PackedScene, _regiment_area_size: Vector2, _regiment_pos: Vector2, _count: int):
 	unit_scene = unit
 	count = _count
 	regiment_area_size = _regiment_area_size
+	position = Vector3(_regiment_pos.x, 0, _regiment_pos.y)
 
 	_spawn_units()
 
@@ -19,7 +20,7 @@ func _spawn_units() -> void:
 
 	for pos in spawn_positions:
 		var unit_instance = unit_scene.instantiate() as Unit
-		unit_instance.position = pos + position
+		unit_instance.position = pos
 		add_child(unit_instance)
 
 
@@ -31,7 +32,7 @@ func _calculate_spawn_positions(unit_prototype: Unit) -> Array[Vector3]:
 	var max_units_x = floor(regiment_area_size.x / (unit_prototype.size.x +  (unit_prototype.size.x/2)))
 	var rows = ceil(count / max_units_x)
 
-	var unit_x_spacing = regiment_area_size.x / max_units_x
+	var unit_x_spacing = regiment_area_size.x / min(max_units_x, count)
 	var unit_z_spacing = unit_prototype.size.z / 2
 
 	for i in range(rows):

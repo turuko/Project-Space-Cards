@@ -28,5 +28,5 @@ func on_input(event: InputEvent) -> void:
 		if card_ui.get_global_mouse_position().y > y_threshold:
 			transition_requested.emit(self, CardState.State.BASE)
 		else:
-			transition_requested.emit(self, CardState.State.RELEASED)
+			transition_requested.emit(self, CardState.State.AIMING)
 		

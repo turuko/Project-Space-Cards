@@ -13,4 +13,5 @@ func on_input(_event: InputEvent) -> void:
 		card_ui.queue_free()
 		return
 
+	card_ui.modulate.a = 1.0
 	transition_requested.emit(self, CardState.State.BASE)

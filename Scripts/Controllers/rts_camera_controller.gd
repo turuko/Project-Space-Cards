@@ -99,7 +99,7 @@ func _zoom(delta: float) -> void:
 	
 	var new_zoom = clamp(camera.position.z + zoom_speed * delta * _zoom_direction, min_zoom, max_zoom)
 
-	var pointing_at = _get_ground_click_location()
+	var pointing_at = Utilities.get_ground_click_location()
 
 	camera.position.z = new_zoom
 
@@ -150,15 +150,8 @@ func _elevate(delta: float, val: float) -> void:
 	elevation.rotation_degrees.x = new_elevation
 
 
-func _get_ground_click_location() -> Variant:
-	var mouse_pos = get_viewport().get_mouse_position()
-	var ray_from = camera.project_ray_origin(mouse_pos)
-	var ray_to = ray_from + camera.project_ray_normal(mouse_pos) * RAY_LENGTH
-	return GROUND_PLANE.intersects_ray(ray_from, ray_to)
-
-
 func _realign_camera(location: Vector3) -> void:
-	var new_location = _get_ground_click_location()
+	var new_location = Utilities.get_ground_click_location()
 	var displacement = location - new_location
 
 	_translate_position(displacement)
