@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr5c0o5602bb0"]
+
+[ext_resource type="Script" path="res://Scripts/Data/Creatures/regiment.gd" id="1_01lfi"]
+
+[node name="Regiment" type="Node3D"]
+script = ExtResource("1_01lfi")

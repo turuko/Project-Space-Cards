@@ -7,8 +7,10 @@ class_name Card extends Resource
 
 @export var effects: Array[CardEffect]
 
-func _on_played(player: Player) -> void:
-	pass
+func _on_played(player: Player) -> bool:
+	player.graveyard.add_card(self)
+	print("Hand:\n" + player.hand._to_string() + "\nGraveyard:\n" + player.graveyard._to_string())
+	return true
 	
 	
 func init_descriptions():

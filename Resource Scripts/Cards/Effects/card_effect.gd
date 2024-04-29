@@ -21,8 +21,9 @@ enum TriggerCondition
 
 @export var targeting: Array[TargetingType]
 @export var description: String
+@export var condition: TriggerCondition
 
-var targets: Array # TODO: Define types that can be in this array
+var targets: Array = [] # TODO: Define types that can be in this array
 
 #This function should be implemented in subclasses of CardEffect. E.g: A DamageEffect would implement this as apply(x) -> deal x damage to targets
 func _apply() -> void:

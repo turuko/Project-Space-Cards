@@ -1,5 +1,16 @@
 extends CardState
 
+var played: bool
 
 func enter() -> void:
-	pass
+	card_ui.state.text = "RELEASED"
+
+	played = card_ui.player.play_card(card_ui.card)
+
+
+func on_input(_event: InputEvent) -> void:
+	if played:
+		card_ui.queue_free()
+		return
+
+	transition_requested.emit(self, CardState.State.BASE)

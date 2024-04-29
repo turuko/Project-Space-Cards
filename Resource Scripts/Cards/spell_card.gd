@@ -1,8 +1,19 @@
 class_name SpellCard extends Card
 
 
-func _on_played(player: Player) -> void:
+func _on_played(player: Player) -> bool:
+
+	var no_targets = false
+
+	for e in effects:
+		if e.targets == []:
+			no_targets = true
+			break
+
+	if no_targets:
+		return false
+
 	for e in effects:
 		if e.condition == CardEffect.TriggerCondition.ON_PLAYED:
 			e.apply()
-	player.graveyard.add_card(self)
+	return super(player)

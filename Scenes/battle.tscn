@@ -1,10 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0vfc0fyictiw"]
+[gd_scene load_steps=13 format=3 uid="uid://c0vfc0fyictiw"]
 
 [ext_resource type="PackedScene" uid="uid://cp3g45gdnojm" path="res://Scenes/hand.tscn" id="1_giwgb"]
 [ext_resource type="Theme" uid="uid://dkn0dl75qg501" path="res://Resources/main_theme.tres" id="2_bths2"]
 [ext_resource type="Script" path="res://Scripts/Data/player.gd" id="3_8kgl7"]
 [ext_resource type="Resource" uid="uid://dfrlevxbqrfvj" path="res://Resources/Cards/test_deck.tres" id="4_ykgmu"]
 [ext_resource type="Script" path="res://Scripts/battle_manager.gd" id="5_x0v3w"]
+[ext_resource type="PackedScene" uid="uid://cggqb75a8w8r" path="res://addons/debug_menu/debug_menu.tscn" id="6_p47ul"]
+[ext_resource type="Script" path="res://Scripts/Controllers/rts_camera_controller.gd" id="7_qu0s5"]
+[ext_resource type="Script" path="res://Scripts/jump_requester.gd" id="8_061kw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ut058"]
+albedo_color = Color(0.341176, 0.341176, 1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_76wd1"]
+material = SubResource("StandardMaterial3D_ut058")
+size = Vector2(100, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vkocg"]
+size = Vector3(100, 0.1, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0wtnb"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -36,12 +51,69 @@ offset_bottom = 808.0
 theme = ExtResource("2_bths2")
 text = "Discard Card"
 
+[node name="ToggleCameraFreeze" type="Button" parent="CanvasLayer"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 150.0
+offset_bottom = 70.0
+theme = ExtResource("2_bths2")
+text = "Toggle Freeze"
+
 [node name="Player" type="Node" parent="."]
 script = ExtResource("3_8kgl7")
 starting_deck = ExtResource("4_ykgmu")
 
-[node name="BattleManager" type="Node" parent="." node_paths=PackedStringArray("draw_button", "discard_button", "player")]
+[node name="BattleManager" type="Node" parent="." node_paths=PackedStringArray("draw_button", "discard_button", "toggle_freeze_button", "player")]
 script = ExtResource("5_x0v3w")
 draw_button = NodePath("../CanvasLayer/DrawButton")
 discard_button = NodePath("../CanvasLayer/DiscardButton")
+toggle_freeze_button = NodePath("../CanvasLayer/ToggleCameraFreeze")
 player = NodePath("../Player")
+
+[node name="CanvasLayer2" parent="." instance=ExtResource("6_p47ul")]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_76wd1")
+
+[node name="Area3D" type="Area3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+shape = SubResource("BoxShape3D_vkocg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.951605, 0.186499, 0.244266, 0, -0.794817, 0.606849, 0.307323, -0.57748, -0.756352, 0, 9.87375, -9.81101)
+
+[node name="RTSCameraController" type="Node3D" parent="."]
+script = ExtResource("7_qu0s5")
+move_speed = 20.0
+zoom_speed_damp = 0.863
+
+[node name="Elevation" type="Node3D" parent="RTSCameraController"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+
+[node name="MainCamera" type="Camera3D" parent="RTSCameraController/Elevation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_0wtnb")
+script = ExtResource("8_061kw")
+duration = 5.0
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7085, 0.5, -17.9636)
+mesh = SubResource("BoxMesh_0wtnb")
+script = ExtResource("8_061kw")
+duration = 0.478
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 23.7384)
+mesh = SubResource("BoxMesh_0wtnb")
+script = ExtResource("8_061kw")
+duration = 1.7
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.86645, 0.5, 0)
+mesh = SubResource("BoxMesh_0wtnb")
+script = ExtResource("8_061kw")

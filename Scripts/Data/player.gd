@@ -13,7 +13,7 @@ var hand_max: int = 10
 
 var max_health: float
 var health: Health
-var mana: int
+var mana: int = 10
 var mana_reset_value: int
 
 
@@ -48,8 +48,6 @@ func draw_card() -> void:
 	var card_drawn := draw_pile.draw_cards(1)
 	if card_drawn == []:
 		return
-
-	print("Hand:\n" + str(hand) + "\nGraveyard:\n" + str(graveyard) + "\nDraw Pile:\n" + str(draw_pile))
 	
 	if hand.size() + 1 > hand_max:
 		print("Hand full")
@@ -61,15 +59,19 @@ func draw_card() -> void:
 	hand_cards_added.emit(card_drawn)
 	
 
-func play_card(card: Card) -> void:
+func play_card(card: Card) -> bool:
 	if mana < card.cost:
-		return
+		return false
 	
-	mana -= card.cost
-	hand.remove_card(card)
-	card._on_played(self)
+	var was_played = card._on_played(self)
 
-	hand_cards_removed.emit([card])
+	if was_played:
+		mana -= card.cost
+		hand.remove_card(card)
+		var cards: Array[Card] = [card]
+		hand_cards_removed.emit(cards)
+	
+	return was_played
 	
 
 func discard_card(card: Card) -> void:

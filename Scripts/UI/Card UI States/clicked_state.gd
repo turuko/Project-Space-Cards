@@ -2,7 +2,7 @@ extends CardState
 
 
 func enter() -> void:
-	pass
+	card_ui.state.text = "CLICKED"
 	
 	
 func on_input(event: InputEvent) -> void:

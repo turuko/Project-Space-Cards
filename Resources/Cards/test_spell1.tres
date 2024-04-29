@@ -9,6 +9,7 @@ script = ExtResource("1_y3641")
 damage = 7.0
 targeting = Array[int]([0, 1, 4])
 description = "XXXX"
+condition = 0
 
 [resource]
 script = ExtResource("1_j73gp")

@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="CreatureCard" load_steps=3 format=3 uid="uid://cuvibpdf7mspe"]
+[gd_resource type="Resource" script_class="CreatureCard" load_steps=4 format=3 uid="uid://cuvibpdf7mspe"]
 
 [ext_resource type="Script" path="res://Resource Scripts/Cards/creature_card.gd" id="1_ewg2k"]
 [ext_resource type="Texture2D" uid="uid://bvha8udggetkq" path="res://icon.svg" id="1_t6j5e"]
+[ext_resource type="PackedScene" uid="uid://07tpgwwpgx8s" path="res://Scenes/unit.tscn" id="3_jru6p"]
 
 [resource]
 script = ExtResource("1_ewg2k")
@@ -10,8 +11,10 @@ damage_per_unit = 10.0
 health_per_unit = 100.0
 armor_per_unit = 3.0
 attacks_per_second = 1.25
+unit_scene = ExtResource("3_jru6p")
+regiment_area_size = Vector2(10, 10)
 cost = 4
 art = ExtResource("1_t6j5e")
 name = "Multiple Godots"
 flavor_text = "The 4'th of the tests"
-effects = Array[Resource("res://Resource Scripts/Cards/Effects/card_effect.gd")]([])
+effects = null

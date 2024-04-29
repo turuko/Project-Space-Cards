@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="CommanderCard" load_steps=5 format=3 uid="uid://byuhjtq1hbrhv"]
+[gd_resource type="Resource" script_class="CommanderCard" load_steps=6 format=3 uid="uid://byuhjtq1hbrhv"]
 
 [ext_resource type="Texture2D" uid="uid://bvha8udggetkq" path="res://icon.svg" id="1_70awv"]
 [ext_resource type="Script" path="res://Resource Scripts/Cards/commander_card.gd" id="1_uwuv3"]
 [ext_resource type="Script" path="res://Resource Scripts/Cards/Effects/damage_effect.gd" id="2_h0yaa"]
+[ext_resource type="PackedScene" uid="uid://07tpgwwpgx8s" path="res://Scenes/unit.tscn" id="4_4qtu4"]
 
 [sub_resource type="Resource" id="Resource_ytlsd"]
 script = ExtResource("2_h0yaa")
 damage = 8.0
 targeting = Array[int]([0, 1, 4])
 description = "Deal x damage"
+condition = 0
 
 [resource]
 script = ExtResource("1_uwuv3")
@@ -16,6 +18,7 @@ damage = 10.0
 health = 250.0
 armor = 4.0
 attacks_per_second = 1.0
+unit = ExtResource("4_4qtu4")
 cost = 5
 art = ExtResource("1_70awv")
 name = "Godot"

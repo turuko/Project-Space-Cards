@@ -1,6 +1,7 @@
 class_name CardUI extends Control
 
 signal reparent_requested(card_ui: CardUI)
+signal save_index(card_ui: CardUI)
 
 @onready var art: TextureRect = $MarginContainer/Content/Art
 @onready var name_label: Label = $MarginContainer/Panel/Name
@@ -9,12 +10,15 @@ signal reparent_requested(card_ui: CardUI)
 @onready var count_label: Label = $MarginContainer/Content/Stats/UnitCount
 @onready var health_label: Label = $MarginContainer/Content/Stats/Health
 @onready var cost_label: Label = $CostRect/Cost
+@onready var state: Label = $"Debug Info/State"
 @onready var state_machine: CardStateMachine = $CardStateMachine as CardStateMachine
 
 var card: Card
+var player: Player
 
-func initialize(c: Card) -> void:
+func initialize(c: Card, p: Player) -> void:
 	card = c
+	player = p
 
 func _ready() -> void:
 	art.texture = card.art

@@ -7,3 +7,4 @@ script = ExtResource("1_3nt3q")
 damage = 0.0
 targeting = Array[int]([0, 1, 4])
 description = "Deal x damage"
+condition = 0
