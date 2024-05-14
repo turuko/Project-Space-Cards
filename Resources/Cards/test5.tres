@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CreatureCard" load_steps=4 format=3 uid="uid://covmx4k3j3ghb"]
+
+[ext_resource type="Texture2D" uid="uid://bvha8udggetkq" path="res://icon.svg" id="1_w8j12"]
+[ext_resource type="Script" path="res://Resource Scripts/Cards/creature_card.gd" id="2_buo2t"]
+[ext_resource type="PackedScene" uid="uid://07tpgwwpgx8s" path="res://Scenes/unit.tscn" id="3_ddj6y"]
+
+[resource]
+script = ExtResource("2_buo2t")
+amount = 20
+damage_per_unit = 10.0
+health_per_unit = 100.0
+armor_per_unit = 3.0
+attacks_per_second = 1.25
+unit_scene = ExtResource("3_ddj6y")
+cost = 4
+art = ExtResource("1_w8j12")
+name = "Multiple Godots"
+flavor_text = "The 4'th of the tests"
+effects = null

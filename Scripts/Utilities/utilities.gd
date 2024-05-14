@@ -36,10 +36,10 @@ func draw_rect(pos1: Vector3, pos2: Vector3, color: Color = Color.YELLOW) -> Nod
 	
 	var mesh_instance = Node.new()
 
-	var l1 = draw_line(pos1, Vector3(pos1.x, pos1.y, pos2.z), color)
-	var l2 = draw_line(Vector3(pos1.x, pos1.y, pos2.z), pos2, color)
-	var l3 = draw_line(pos2, Vector3(pos2.x, pos2.y, pos1.z), color)
-	var l4 = draw_line(Vector3(pos2.x, pos2.y, pos1.z), pos1, color)
+	var l1 = draw_line(pos1 + Vector3.UP * 0.1, Vector3(pos1.x, pos1.y + 0.1, pos2.z), color)
+	var l2 = draw_line(Vector3(pos1.x, pos1.y + 0.1, pos2.z), pos2 + Vector3.UP * 0.1, color)
+	var l3 = draw_line(pos2 + Vector3.UP * 0.1, Vector3(pos2.x, pos2.y + 0.1, pos1.z), color)
+	var l4 = draw_line(Vector3(pos2.x, pos2.y + 0.1, pos1.z), pos1 + Vector3.UP * 0.1, color)
 
 	mesh_instance.add_child(l1)
 	mesh_instance.add_child(l2)

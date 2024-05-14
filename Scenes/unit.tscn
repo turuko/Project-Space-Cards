@@ -1,13 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://07tpgwwpgx8s"]
+[gd_scene load_steps=5 format=3 uid="uid://07tpgwwpgx8s"]
 
 [ext_resource type="Script" path="res://Scripts/Data/Creatures/unit.gd" id="1_yg3oh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jpsps"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ash4b"]
+resource_local_to_scene = true
+transparency = 1
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_46pfl"]
+material = SubResource("StandardMaterial3D_ash4b")
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.131668, 1, 0)
 script = ExtResource("1_yg3oh")
 size = Vector3(1, 2, 1)
 
